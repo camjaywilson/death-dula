@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graceful Goodbyes - End-of-Life Companion Care</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23e8f4f8;stop-opacity:1" /><stop offset="100%" style="stop-color:%23f0f8ff;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23grad)"/></svg>');
+            background-size: cover;
+            text-align: center;
+            padding: 80px 0 100px;
+            border-bottom: 3px solid #d1ecf1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: #5a6c7d;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .dove-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            color: #17a2b8;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #17a2b8;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-section .icon {
+            font-size: 2.5rem;
+            color: #17a2b8;
+        }
+
+        .content-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #495057;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .content-section li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .content-section li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #17a2b8;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.featured {
+            border-top-color: #dc3545;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Comprehensive";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #dc3545;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .green { color: #28a745; }
+        .pricing-card .blue { color: #007bff; }
+        .pricing-card .red { color: #dc3545; }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #17a2b8;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .description {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* Bonuses Section */
+        .bonuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .bonus-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border-left: 4px solid #ffc107;
+        }
+
+        .bonus-item .icon {
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .bonus-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .bonus-item p {
+            font-size: 1rem;
+            color: #495057;
+        }
+
+        /* Promise Section */
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .promise-item {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border-top: 3px solid #17a2b8;
+        }
+
+        .promise-item .icon {
+            font-size: 2.5rem;
+            color: #17a2b8;
+            margin-bottom: 15px;
+        }
+
+        .promise-item p {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(23, 162, 184, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #17a2b8;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.4);
+            color: #138496;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .content-section {
+                padding: 30px 25px;
+            }
+            
+            .content-section h2 {
+                font-size: 2rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .cta-section {
+                padding: 40px 25px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Gentle animations */
+        .content-section, .pricing-card, .bonus-item, .promise-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .content-section:nth-child(1) { animation-delay: 0.1s; }
+        .content-section:nth-child(2) { animation-delay: 0.2s; }
+        .content-section:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="dove-icon">🕊️</div>
+            <h1>Graceful Goodbyes</h1>
+            <p class="subtitle">Be Fully Present. We'll Handle the Rest.</p>
+            <p class="tagline">A deeply personal service offering emotional, spiritual, and practical support to families and their loved ones during life's most sacred transition.</p>
+        </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2><span class="icon">💬</span>The Support You Deserve</h2>
+                <p>When someone you love is nearing the end of life, every moment matters.</p>
+                <p>But in those moments, most families feel overwhelmed — torn between managing logistics, comforting others, and trying to be emotionally present.</p>
+                <p><strong>Graceful Goodbyes</strong> steps in to bring peace, presence, and practical relief. We help you and your loved ones focus on what truly matters: connection, comfort, and closure.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- What's Included Section -->
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2><span class="icon">🤝</span>What's Included</h2>
+                <p>We serve as both a compassionate companion and a skilled end-of-life concierge.</p>
+                <p><strong>Every package includes:</strong></p>
+                <ul>
+                    <li>Presence during the active dying phase (in-home or on-call)</li>
+                    <li>Emotional support for the individual and the family</li>
+                    <li>Help with final wishes, memory sharing, and rituals</li>
+                    <li>Comfort coordination: lighting, music, environment</li>
+                    <li>Concierge services (meal orders, errands, home care)</li>
+                    <li>End-of-Life Toolkit: forms, checklists, referrals</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2><span class="icon">📦</span>Choose Your Level of Support</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="card-icon green">🟢</div>
+                        <h3>The Calm Presence</h3>
+                        <div class="price">$497</div>
+                        <p class="description">4-hour visit (virtual or in-home) for emotional support, end-of-life clarity, and environment setup.</p>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="card-icon blue">🔵</div>
+                        <h3>The Goodbye Gathering</h3>
+                        <div class="price">$997</div>
+                        <p class="description">Two days of support (up to 8 hours) including comfort coordination and legacy memory creation.</p>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <div class="card-icon red">🔴</div>
+                        <h3>The Sacred Transition</h3>
+                        <div class="price">$2,500</div>
+                        <p class="description">On-call or live-in presence up to 3 days, full concierge, and legacy guidance from start to finish.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bonuses Section -->
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2><span class="icon">🎁</span>Bonuses Included</h2>
+                <div class="bonuses-grid">
+                    <div class="bonus-item">
+                        <div class="icon">💌</div>
+                        <h4>Legacy Kit</h4>
+                        <p>Letter writing, voice messages, and memory boxes</p>
+                    </div>
+                    
+                    <div class="bonus-item">
+                        <div class="icon">🍽️</div>
+                        <h4>Comfort Concierge Pack</h4>
+                        <p>Meals, home care, and errand coordination</p>
+                    </div>
+                    
+                    <div class="bonus-item">
+                        <div class="icon">📋</div>
+                        <h4>Logistics Kit</h4>
+                        <p>Post-passing checklist, legal & funeral planning tools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promise Section -->
+    <div class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2><span class="icon">🛡️</span>Our Promise to You</h2>
+                <div class="promise-grid">
+                    <div class="promise-item">
+                        <div class="icon">👥</div>
+                        <p>We only serve 2 families at a time — full presence, never rushed</p>
+                    </div>
+                    
+                    <div class="promise-item">
+                        <div class="icon">⚡</div>
+                        <p>We respond quickly — often same day availability</p>
+                    </div>
+                    
+                    <div class="promise-item">
+                        <div class="icon">💯</div>
+                        <p><strong>Comfort or Cancel Guarantee:</strong> If it doesn't feel right after 2 hours, you won't be charged</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="section">
+        <div class="container">
+            <div class="cta-section">
+                <div class="icon">🌿</div>
+                <h2>Let's Talk — No Pressure</h2>
+                <p>This is a sacred time. Let's make sure you feel fully supported through it.</p>
+                <a href="#" class="cta-button">📞 Book a Free 20-Minute Consultation</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
