@@ -192,12 +192,17 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Intro">
-    <!-- Replace with your real assets -->
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/hero-poster.jpg">
-      <source src="/assets/hero-bg.webm" type="video/webm">
-      <source src="/assets/hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay" aria-hidden="true"></div>
+<video class="hero-video"
+         autoplay
+         muted
+         loop
+         playsinline
+         preload="metadata"
+         poster="assets/hero-bg.jpg">
+    <source src="assets/hero-bg.mp4" type="video/mp4">
+    <!-- If you later add a .webm version, put it first for better compression support -->
+  </video>
+  <div class="hero-overlay" aria-hidden="true"></div>    
 
     <div class="container hero-content">
       <div class="dove-icon" aria-hidden="true">🕊️</div>
