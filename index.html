@@ -66,22 +66,44 @@
     .nav-spacer{height:64px} /* pushes content below fixed header */
 
     /* Hero */
-    .hero{position:relative; min-height:72vh; display:grid; place-items:center; overflow:hidden}
-    .hero-video{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.7) contrast(1.05) saturate(1.1);
-    }
-    .hero-overlay{
-      position:absolute; inset:0;
-      background:radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.35) 0%, rgba(255,255,255,.18) 40%, rgba(255,255,255,.08) 60%, rgba(255,255,255,0) 100%),
-                 linear-gradient(to bottom, rgba(255,255,255,.4), rgba(255,255,255,.0) 40%, rgba(255,255,255,.7) 100%);
-      pointer-events:none;
-    }
-    .hero-content{
+    .hero {
+  position: relative;
+  min-height: 72vh; /* or 100vh for full screen */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures video always covers area */
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.5) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* sits above video + overlay */
+}
+    /* .hero-content{
       position:relative; z-index:2; text-align:center; padding: clamp(28px, 6vw, 48px);
       background:var(--glass-bg); border:1px solid var(--glass-stroke); border-radius:var(--radius-xl);
       box-shadow: var(--shadow-1);
       backdrop-filter: blur(12px) saturate(1.1);
-    }
+    } */
     .dove-icon{font-size:2rem; margin-bottom:10px}
     .subtitle{color:var(--ink-3); font-weight:700; margin:8px 0 6px}
     .tagline{color:var(--ink-4); max-width:60ch; margin: 8px auto 20px}
@@ -198,7 +220,7 @@
          loop
          playsinline
          preload="metadata"
-         poster="assets/hero-bg.jpg">
+         poster="assets/hero-bg.webp">
     <source src="assets/hero-bg.mp4" type="video/mp4">
     <!-- If you later add a .webm version, put it first for better compression support -->
   </video>
@@ -262,7 +284,7 @@
         <!-- IMAGE OR NOTE BLOCK -->
         <aside aria-label="Service visual" class="content-section">
           <!-- Replace with a tasteful photo; keep alt meaningful -->
-          <img src="/assets/holding-hands.jpg" alt="Hands gently held beside a bed, symbolizing comfort and presence" style="width:100%; display:block; border-radius:16px; border:1px solid rgba(0,0,0,.08); box-shadow:var(--shadow-2)">
+          <img src="/assets/holding-hands.webp" alt="Hands gently held beside a bed, symbolizing comfort and presence" style="width:100%; display:block; border-radius:16px; border:1px solid rgba(0,0,0,.08); box-shadow:var(--shadow-2)">
         </aside>
       </div>
     </section>
